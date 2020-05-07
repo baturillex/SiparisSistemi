@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Söyle Gelsin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/siparisver.css" />
+    <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" />
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/1fa2e54b22.js" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="/views/jquery.js"></script>
+</head>
+
+
+
+
+<body>
+
+
+
+
+
+
+    <form action="/siparisver" method="POST" enctype="application/x-www-form-urlencoded">
+        <button type="hidden" class="siparisverButton" href="Login">Sipariş Ver</button>
+        <div class="content">
+            <div class="devideDIV">
+                <% veri2.forEach(function(İmgAc){ %>
+                <span name="siparisverilenmekanadicc">&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;
+                    Siparişinizi Hemen Oluşturabilirsiniz
+                    <div class="cartIconDIV"></div>
+                </span>
+
+
+                <input type="hidden" name="siparisverilenmekanadi" value="<%=İmgAc.MekanAdi%>">
+                <% }); %>
+            </div>
+            <div class="cartTop">
+
+            </div>
+            <div style="clear:both;"></div>
+            <button type="hidden" href="Login"></button>
+            <div class="cartMain">
+                <table id="cartTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for="fl select-all">
+                                    <input type="checkbox" class="check-all check" />
+                                    <span><a href="javascript:void(0)" class="selallSPAN">&nbsp;</a></span>
+                                </label>
+                            </th>
+                            <th>Ürün Adı</th>
+                            <th>Fiyat</th>
+                            <th>Adet</th>
+
+                            <th>Toplam Fiyat</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% veri.forEach(function(İmgAc){ %>
+
+                        <td class="checkbox">
+                            <input type="checkbox" class="check-one check" />
+                        </td>
+                        <td class="goods">
+                            <img src="https://i.imgyukle.com/2020/04/30/ruaSef.jpg" alt="" />
+                            <span><a href="##" value="" id="ismibaba" class="goodsTitle"><%=İmgAc.Ad%></a></span><br />
+                            <span></span><br />
+                            <!-- <span><a href="##" class="sellerTitle"></a></span> -->
+                        </td>
+                        <td class="price"><%=İmgAc.Fiyat%></td>
+                        <td class="count">
+                            <span class="reduce">-</span>
+                            <input type="number" class="count-input" value="0" id="quantity" />
+                            <span class="add">+</span>
+                        </td>
+                        <td class="subtotal">0.0</td>
+                        <td class="opration">
+                            <span class="deleteOne">Sil</span>
+                        </td>
+                        </tr>
+                        <!-- <td class="checkbox">
+                        <input type="checkbox" class="check-one check" />
+                    </td>
+                    <td class="goods">
+                        <img src="https://i.imgyukle.com/2020/04/25/Q7D0SP.jpg" alt="" />
+                        <span><a href="##" class="goodsTitle">Börek</a></span><br />
+                        <span>from:</span><br />
+                        <span><a href="##" class="sellerTitle">商家aaaaa</a></span>
+                    </td>
+                    <td class="price">200.63</td>
+                    <td class="count">
+                        <span class="reduce"></span>
+                        <input type="text" class="count-input" value="1" />
+                        <span class="add">+</span>
+                    </td>
+                    <td class="subtotal">200.63</td>
+                    <td class="opration">
+                        <span class="deleteOne">Sil</span>
+                    </td> -->
+                        <% }); %>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <img class="motokurye" src="https://i.imgyukle.com/2020/04/30/ruxJ0t.png" />
+            </div><a name="Adres" class="adress">Adres bilginizi yazınız.</a>
+
+            <input type="text" name="Aciklamaİki" class="textarea">
+            <a name="Adres" class="odemetipi">Ödemenizi Nasıl Yapacaksınız ?</a>
+
+            <input class="kartlaodeme" type="checkbox" id="vehicle1" name="nakitkredi" value="Kredi  "><a
+                class="krediode">Kredi ile
+                ödeme</a>
+            <input class="kartlaodeme" type="checkbox" id="vehicle1" name="nakitkredi" value="Kredi  "><a
+                class="krediode">Nakit
+                Ödeme</a>
+
+            <% veri3.forEach(function(p){ %>
+            <input class="kartlaodeme" type="hidden" id="vehicle1" name="ad" value="<%=p.KullaniciAdi%>">
+
+
+
+            <% }); %>
+            <img class="kart" src="https://i.imgyukle.com/2020/04/30/ruxmIH.png" />
+
+            <img class="cashmoneyimg" src="https://i.imgyukle.com/2020/04/30/ru5sse.png" />
+
+
+            <div class="cartFooter" id="cartFooter">
+                <div class="selall fl">
+                    <label for="fl select-all">
+                        <input type="checkbox" class="check-all check" />
+                        <span><a href="javascript:void(0)" class="selallSPAN">Tümü</a></span>
+                    </label>
+                </div>
+                <!-- <a href="#" id="multiDelete" class="fl delete">多 选 删 除</a>
+            <a href="#" id="allDelete" class="fl delete">清 空 购 物 车</a> -->
+
+                <div class="fr total">
+                    <input type="hidden" value="0.0" name="totalfiyat" id="priceTotal2">
+                </div>
+                <a id="priceTotal">0.0</a>
+
+                <div class="fr selected" id="selected">
+                    Seçili Ürün
+                    <span id="selectedTotal">0</span>Adet
+                    <span class="arrow up">Seçili Ürünler</span>
+                    <span class="arrow down">︾</span>
+                </div>
+
+                <div class="selected-view">
+
+                    <div id="selectedViewList" class="clearfix">
+
+
+                    </div>
+
+    </form>
+    <span class="arrow">◆<span>◆</span></span>
+    </div>
+    </div>
+    </div>
+</body>
+
+<script>
+    window.onload = function () {
+        if (!document.getElementsByClassName) {
+            document.getElementsByClassName = function (cls) {
+                var ret = [];
+                var els = document.getElementsByTagName('*');
+                for (var i = 0; i < els.length; i++) {
+                    if (
+                        els[i].className === cls ||
+                        els[i].className.indexOf(cls + ' ') >= 0 ||
+                        els[i].className.indexOf(' ' + cls) >= 0 ||
+                        els[i].className.indexOf(' ' + cls + ' ') >= 0
+                    ) {
+                        ret.push(els[i]);
+                    }
+                }
+                return ret;
+            };
+        }
+        var cartTable = document.getElementById('cartTable');
+        var tr = cartTable.children[1].rows;
+        var checkInputs = document.getElementsByClassName('check');
+        var checkAllInput = document.getElementsByClassName('check-all');
+        var selectedTotal = document.getElementById('selectedTotal');
+        var priceTotal = document.getElementById('priceTotal');
+        var priceTotal2 = document.getElementById('priceTotal2');
+
+        var selected = document.getElementById('selected');
+        var cartFooter = document.getElementById('cartFooter');
+        var selectedViewList = document.getElementById('selectedViewList');
+        var multiDelete = document.getElementById('multiDelete');
+        var allDelete = document.getElementById('allDelete');
+        var selallSPAN = document.getElementsByClassName('selallSPAN');
+        var urunadi = document.getElementById('ismibaba');
+
+
+
+        for (var i = 0; i < checkInputs.length; i++) {
+            checkInputs[i].onclick = function () {
+                if (this.className === 'check-all check') {
+                    for (var j = 0; j < checkInputs.length; j++) {
+                        checkInputs[j].checked = this.checked;
+                    }
+                }
+                if (this.checked == false) {
+                    for (var k = 0; k < checkAllInput.length; k++) {
+                        checkAllInput[k].checked = false;
+                    }
+                }
+                getTotal();
+            };
+        }
+        selallSPAN[0].onclick = selallSPAN[1].onclick = function () {
+            for (var k = 0; k < checkAllInput.length; k++) {
+                if (checkAllInput[k].checked) {
+                    checkAllInput[k].checked = false;
+                } else {
+                    checkAllInput[k].checked = true;
+                }
+            }
+            for (var j = 0; j < checkInputs.length; j++) {
+                checkInputs[j].checked = checkAllInput[0].checked;
+            }
+            getTotal();
+        };
+
+        // var myArr = [''];
+        // function pushData() {
+
+        //     var urunstok = document.getElementById('urunAdets').value;
+        //     var urunisimleri = document.getElementById('urunName').value;
+
+        //     myArr.push(urunAdets, urunName);
+        //     // myArr.push(urunName);
+
+        //     var sonuc = "";
+
+        //     for (i = 0; i < myArr.length; i++) {
+        //         sonuc = sonuc + myArr[i];
+        //     }
+
+        //     document.getElementById(''.innerHTML = sonuc);
+
+        // }
+
+        function getTotal() {
+            var selected = 0;
+            var price = 0;
+            var urunAdi = '';
+            var HTMLstr = '';
+
+
+
+            for (var i = 0; i < tr.length; i++) {
+
+                var perCount = tr[i].getElementsByTagName('input')[1].value;
+                urunSayisi = tr[i].getElementsByTagName('input')[1].value;
+
+
+                if (tr[i].getElementsByTagName('input')[0].checked) {
+                    tr[i].className = 'on';
+                    urunAdi = tr[i].querySelector(".goods span .goodsTitle").innerText;
+
+
+                    selected += parseInt(tr[i].getElementsByTagName('input')[1].value);
+                    price += parseFloat(tr[i].cells[4].innerHTML);
+                    HTMLstr +=
+                        '<div><img src="' +
+                        tr[i].getElementsByTagName('img')[0].src +
+                        '"/><input id="urunAdets"class="selCount" name="Urun' + '"value="    ' +
+                        perCount + // ürün adeti
+                        '">' +
+                        '</input><input id="urunName"class="del" name="Urun' + '"value=" Adet  ' +
+                        urunAdi +
+                        '">' + urunAdi + '</input></div>';
+
+                } else {
+                    tr[i].className = ' ';
+                }
+            }
+            selectedTotal.innerHTML = selected;
+            priceTotal.innerHTML = price.toFixed(2);
+            priceTotal2.value = price.toFixed(2);
+
+
+
+            selectedViewList.innerHTML = HTMLstr;
+            if (selected == 0) {
+                cartFooter.className = 'cartFooter';
+            }
+        }
+
+        selected.onclick = function () {
+            if (cartFooter.className == 'cartFooter') {
+                if (selectedTotal.innerHTML != 0) {
+                    cartFooter.className = 'cartFooter show';
+                }
+            } else {
+                cartFooter.className = 'cartFooter';
+            }
+        };
+
+
+        selectedViewList.onclick = function (e) {
+            e = e || window.event;
+            var el = e.srcElement;
+            if (el.className == 'del') {
+                var index = el.getAttribute('name');
+                var input = tr[index].getElementsByTagName('input')[0];
+                input.checked = false;
+                input.onclick();
+            }
+        };
+
+
+        for (var i = 0; i < tr.length; i++) {
+
+            tr[i].onclick = function (e) {
+                e = e || window.event;
+                document.onselectstart = new Function('event.returnValue=false;');
+                var el = e.target || e.srcElement;
+                var cls = el.className;
+                var input = this.getElementsByTagName('input')[1];
+                var val = parseInt(input.value);
+                var reduce = this.getElementsByTagName('span')[3];
+                switch (cls) {
+                    case 'add':
+                        input.value = val + 1;
+                        reduce.innerHTML = '-';
+                        getSubtotal(this);
+                        break;
+                    case 'reduce':
+                        if (val > 1) {
+                            input.value = val - 1;
+                            getSubtotal(this);
+                        }
+                        if (input.value <= 1) {
+                            reduce.innerHTML = '';
+                        }
+                        break;
+                    case 'deleteOne':
+                        var conf = confirm('Bu Ürünü Görmek İstemediğinize Emin Misiniz ?');
+                        if (conf) {
+                            this.parentNode.removeChild(this);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                if (input.value == 20) {
+                    alert("Çok fazla Ürün Seçtiniz");
+                    input.value = 0;
+                }
+                getTotal();
+            };
+            tr[i].getElementsByTagName('input')[1].onkeyup = function () {
+                var val = parseInt(this.value);
+                var tr = this.parentNode.parentNode;
+                var reduce = tr.getElementsByTagName('span')[3];
+                if (isNaN(val) || val < 1) {
+                    val = 1;
+                }
+                this.value = val;
+                if (val <= 1) {
+                    reduce.innerHTML = '';
+                } else {
+                    reduce.innerHTML = '-';
+                }
+                getSubtotal(tr);
+                getTotal();
+            };
+        }
+
+        function getSubtotal(tr) {
+            var tds = tr.cells;
+            var price = parseFloat(tds[2].innerHTML);
+            var count = tr.getElementsByTagName('input')[1].value;
+            var subTotal = parseFloat(price * count).toFixed(2);
+            tds[4].innerHTML = subTotal;
+        }
+
+
+        multiDelete.onclick = function () {
+            if (selectedTotal.innerHTML != '0') {
+                var conf = confirm('确定删除吗？');
+                if (conf) {
+                    cartDel();
+                    getTotal();
+                }
+            }
+        };
+        allDelete.onclick = function () {
+            var conf = confirm('Emin misiniz？');
+            if (conf) {
+                checkAllInput[0].checked = true;
+                checkAllInput[0].onclick();
+                cartDel();
+                getTotal();
+            }
+        };
+        function cartDel() {
+            for (var i = 0; i < tr.length; i++) {
+                var input = tr[i].getElementsByTagName('input')[0];
+                if (input.checked) {
+                    tr[i].parentNode.removeChild(tr[i]);
+                    i--;
+                }
+            }
+        }
+    };
+
+</script>
+
+
+</html>

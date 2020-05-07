@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Söyle Gelsin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="/css/hamburger.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/css/spor.css" />
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="/javascript/home.js"></script>
+</head>
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light #2b5ca2">
+        <a class="navbar-brand" href="#">Söyle Gelsin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <% veri2.forEach(function(p){ %>
+                    <a class="nav-link" style="color: white;" href="Anasayfa">Anasayfa <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="bizeulasin">Bize Ulaşın</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " style="color: white;" href="sikayet">Şikayet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " style="color: white;" href="duyurular">Duyurular</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " style="color: white;"
+                        href="Profilim/<%=p.KullaniciAdi%> <%=p.MekanAdi%>">Profilim</a>
+
+
+                </li>
+
+            </ul>
+
+            <li class=" nav-item">
+                <a class="nav-link " name="ad" style="    position: absolute;
+                left: 757px;
+                top: -7px;
+                font-size: 21px;
+                color: white;"><%=p.KullaniciAdi%></a>
+            </li>
+            <% });%>
+
+
+            </ul>
+
+
+
+
+
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Mekan Ara" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Ara</button>
+                <div class="dropdown" style="    margin-left: 50px;">
+                    <span>Kategoriler</span>
+                    <div class="dropdown-content" style="color:black;">
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="hamburger">Hamburger</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="balik">Balık</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="doner">Döner</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="pide">Pide</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="fastfood">Fast Food</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="pizza">Pizza</a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+
+    <section id="team" class="pb-5">
+        <div class="container">
+
+            <div class="col">
+                <div class="row-xs-12 row-sm-6 row-md-4" style="    width: 650px;">
+                    <% veri.forEach(function(İmgAc){ %>
+
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+
+                            <div class="frontside">
+
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class=" img-fluid" src="data:image/jpg;base64,<%= İmgAc.MekanResim %>"
+                                                alt="card image"></p>
+                                        <h4 class="card-title"><%=İmgAc.MekanAdi%></h4>
+                                        <input type="hidden" name="sikayetedilenmekanadi" value="<%=İmgAc.MekanAdi%>">
+                                        <p class=" card-text" style="font-size: 20px;"><%=İmgAc.Lokasyon%></p>
+                                        <p class=" card-text" style="font-size: 20px;">Paket Sipariş
+                                            : <%=İmgAc.PaketSiparis%></p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title"><%=İmgAc.MekanAdi%></h4>
+                                        <!-- DBDEN AÇIKLAMA KISIMI ALTA GELECEK.-->
+                                        <p class="card-text"><%=İmgAc.Aciklama%></p>
+                                        <button href="mekanBilgileri/<%=İmgAc.MekanAdi%>"
+                                            class="btn card_btn mekanagitbuton" style="  background: #fc5c00 !important;
+                                                color: white!important;
+                                                font-variant-caps: all-small-caps;
+                                                font-size: 18px;
+                                                width: 330px;"><a class="nav-link " style="color: white !important;"
+                                                href="mekanBilgileri/<%=İmgAc.MekanAdi%>">Mekana Git</a></button>
+                                        <button href="siparisver" class="btn card_btn mekanagitbuton" style="  background: #fc5c00 !important;
+                                                        color: white!important;
+                                                        font-variant-caps: all-small-caps;
+                                                        font-size: 18px;
+                                                        width: 330px;"><a class="nav-link "
+                                                style="color: white !important;"
+                                                href="siparisver/<%=İmgAc.MekanAdi%>">Sipariş Ver
+                                            </a></button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <a class="nav-link " name="ad" style="position: absolute;
+                        left: 690px;
+                        top: -7px;
+                        font-size: 20px;
+                        color: white;
+                        font-family: fantasy;
+                            font-family: fantasy;"><%=İmgAc.KullaniciAdi%> <%=İmgAc.MekanAdı%> </a>
+                    <a style="font-size: 50px;"><%=İmgAc.İd%></a>
+
+                    <% }); %>
+
+                </div>
+                <!-- ./Team member -->
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    </section>
+
+</body>
+
+<script>
+    $("#fixed-form-container .body").hide();
+    $("#fixed-form-container .button").click(function () {
+        $(this).next("#fixed-form-container div").slideToggle(400);
+        $(this).toggleClass("expanded");
+    });
+</script>
+
+
+</html>
